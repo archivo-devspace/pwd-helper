@@ -1,0 +1,29 @@
+{
+  "name": "pwd-helper",
+  "version": "1.0.0",
+  "description": "This is password utility helper for software development.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmitdev/pwd-helper.git"
+  },
+  "keywords": [
+    "password-helper",
+    "pwd-helper"
+  ],
+  "author": "Htet Wai Yan Aung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmitdev/pwd-helper/issues"
+  },
+  "homepage": "https://github.com/mmitdev/pwd-helper#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "nodemon": "^3.1.0",
+    "typescript": "^5.4.3"
+  }
+}

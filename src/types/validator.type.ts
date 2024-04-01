@@ -1,0 +1,1 @@
+export type PasswordStrengthStatus =  "low" | "medium" | "high";

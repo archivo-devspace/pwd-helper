@@ -1,0 +1,20 @@
+{
+    "generator" : {
+        "default" : {
+            "length" : 10,
+            "uppercase" : true,
+            "lowercase" : true,
+            "numbers" : true,
+            "symbols" : true
+        }
+    },
+    "validator" : {
+        "default" : {
+            "minLength" : 10,
+            "uppercase" : true,
+            "lowercase" : true,
+            "numbers" : true,
+            "symbols" : true
+        }
+    }
+}
