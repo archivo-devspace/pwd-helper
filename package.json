@@ -4,7 +4,8 @@
   "description": "This is password utility helper for software development.",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon",
+    "compile:watch": "npx tsc -w",
+    "output:watch": "npx nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
