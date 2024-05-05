@@ -4,7 +4,7 @@ import ConfigType, { ValidatorConfigType } from "../types/config.type";
 import Config from "../constants/config";
 import { PasswordStrengthStatus } from "../types/validator.type";
 
-export function checkStrengthStatus({
+export async function checkStrengthStatus({
   password,
   key = "default",
 }: {
@@ -14,31 +14,29 @@ export function checkStrengthStatus({
   status: PasswordStrengthStatus | null;
   message: string;
 }> {
-  return fs.promises
-    .readFile(path.join(process.cwd(), Config.FileName), "utf8")
-    .then((data: string) => {
-      const config: ConfigType = JSON.parse(data);
-      return checkPasswordStrength({
-        password,
-        validatorConfig: config.validator,
-        key,
-      });
-    })
-    .catch((err) => {
-      if (err.code === "ENOENT") {
-        console.error(
-          `${Config.FileName} file is required in the project root folder.`
-        );
-      } else {
-        console.log("Error : ", err);
-        console.error("Error message : ", err.message);
-      }
-
-      return {
-        status: null,
-        message: `Error : ${err.message}`,
-      };
+  try {
+    const data = await fs.promises
+      .readFile(path.join(process.cwd(), Config.FileName), "utf8");
+    const config: ConfigType = JSON.parse(data);
+    return checkPasswordStrength({
+      password,
+      validatorConfig: config.validator,
+      key,
     });
+  } catch (err : any) {
+    if (err.code === "ENOENT") {
+      console.error(
+        `${Config.FileName} file is required in the project root folder.`
+      );
+    } else {
+      console.log("Error : ", err);
+      console.error("Error message : ", err.message);
+    }
+    return {
+      status: null,
+      message: `Error : ${err.message}`,
+    };
+  }
 }
 
 function checkPasswordStrength({

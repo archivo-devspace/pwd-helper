@@ -6,14 +6,9 @@
     "strict": true, // Enable stricter type checking for better code quality
     "forceConsistentCasingInFileNames": true, // Ensures consistent file naming (optional)
     "skipLibCheck": true, // Avoid checking library files for errors (optional)
-    "outDir": "dist", // Output compiled JavaScript files to the 'dist' directory
+    "outDir": "dist/cjs", // Output compiled JavaScript files to the 'dist' directory
     "declaration": true, // Generate type declaration files (.d.ts) for consumers
-    "declarationDir": "./lib", // Output type declaration files to the 'lib' directory (optional),
-    "paths": {
-      "./constants/*" : ["./constants/*"]
-    },
-    "baseUrl": "src"
   },
   "include": ["src"], // Include all files in the 'src' directory for compilation
-  "exclude": ["node_modules", "dist", "lib"] // Exclude these directories
+  "exclude": ["node_modules", "dist"] // Exclude these directories
 }

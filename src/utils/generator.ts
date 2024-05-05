@@ -3,16 +3,17 @@ import * as path from "path";
 import ConfigType from '../types/config.type';
 import Config from '../constants/config';
 
-export function generate() {
-    return fs.promises.readFile(path.join(process.cwd(), Config.FileName),'utf8').then((data: string) => {
-        const config : ConfigType = JSON.parse(data)
-        const {generator : {default : {length, lowercase, numbers, symbols, uppercase}}} = config;
-        return generateRandomPassword(length, {uppercase, lowercase, numbers,symbols})
-    }).catch(err => {
+export async function generate() {
+    try {
+        const data = await fs.promises.readFile(path.join(process.cwd(), Config.FileName), 'utf8');
+        const config: ConfigType = JSON.parse(data);
+        const { generator: { default: { length, lowercase, numbers, symbols, uppercase } } } = config;
+        return generateRandomPassword(length, { uppercase, lowercase, numbers, symbols });
+    } catch (err : any) {
         console.error(`${Config.FileName} file is required in the project root folder.`);
         console.error(err.message);
         return '';
-    });
+    }
 }
 
 function generateRandomPassword(length: number, options: { uppercase?: boolean, lowercase?: boolean, numbers?: boolean, symbols?: boolean }): string {
